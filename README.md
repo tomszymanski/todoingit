@@ -1,23 +1,23 @@
-Single-user command-line TODO App
+TODOINGIT
 =================================
 
 Example commands
 ----------------
 
-```
-    $ ruby todo.rb add Bake a delicious blueberry-glazed cheesecake
-    $ ruby todo.rb list
-    $ ruby todo.rb delete <task_id>
-    $ ruby todo.rb complete <task_id>
+```ruby
+$ ruby todo.rb add Bake a delicious blueberry-glazed cheesecake
+$ ruby todo.rb list
+$ ruby todo.rb delete <task_id>
+$ ruby todo.rb complete <task_id>
 ```
 
 Example CSV
 -----------
 
-```
-  Bake a delicious blueberry-glazed cheesecake  
-  Go play miniature golf with Mike Tyson  
-  Become a World-Class Developer
+```csv
+Bake a delicious blueberry-glazed cheesecake  
+Go play miniature golf with Mike Tyson  
+Become a World-Class Developer
 ```
 
 Learning Goals
@@ -44,11 +44,11 @@ These aren't just the user-facing commands like "add", "delete", etc. They're al
 Objective: Implement the List Command
 -------------------------------------
 
-```
-    $ ruby todo.rb list
-    1. Bake a delicious blueberry-glazed cheesecake
-    2. Write up that memo and fax it out
-    3. Conquer the world
+```ruby
+$ ruby todo.rb list
+1. Bake a delicious blueberry-glazed cheesecake
+2. Write up that memo and fax it out
+3. Conquer the world
 ```
 
 You'll have to design and build basic controller and model code to make this work. For example, how does your program know the user wants to "add" a task to their list?
@@ -56,26 +56,26 @@ You'll have to design and build basic controller and model code to make this wor
 Objective: Implement the Add Command
 ------------------------------------
 
-```
-    $ ruby todo.rb add Walk the dog
-    Appended "Walk the dog" to your TODO list...
+```ruby
+$ ruby todo.rb add Walk the dog
+Appended "Walk the dog" to your TODO list...
 ```
 
 Objective: Implement the Delete Command
 ---------------------------------------
 
-```
-    $ ruby todo.rb list
-    1. Bake a delicious blueberry-glazed cheesecake
-    2. Write up that memo and fax it out
-    3. Conquer the world
+```ruby
+$ ruby todo.rb list
+1. Bake a delicious blueberry-glazed cheesecake
+2. Write up that memo and fax it out
+3. Conquer the world
 
-    $ ruby todo.rb delete 3
-    Deleted "Conquer the world" from your TODO list...
+$ ruby todo.rb delete 3
+Deleted "Conquer the world" from your TODO list...
 
-    $ ruby todo.rb list
-    1. Bake a delicious blueberry-glazed cheesecake
-    2. Write up that memo and fax it out
+$ ruby todo.rb list
+1. Bake a delicious blueberry-glazed cheesecake
+2. Write up that memo and fax it out
 ```
 
 Objective: Implement Completeness
@@ -88,9 +88,11 @@ Extra Credit: Human Readable File
 ---------------------------------
 Make it look good and handle commas
 
-    1. [ ]  Bake a delicious blueberry-glazed cheesecake
-    2. [X]  Write up that memo and fax it out
-    3. [ ]  Conquer the world
+```ruby
+1. [ ]  Bake a delicious blueberry-glazed cheesecake
+2. [X]  Write up that memo and fax it out
+3. [ ]  Conquer the world
+```
 
 (the brackets indicate whether the task has been completed or not)
 
