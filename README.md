@@ -4,7 +4,7 @@ TODOINGIT
 Example commands
 ----------------
 
-```ruby
+```
 $ ruby todo.rb add Bake a delicious blueberry-glazed cheesecake
 $ ruby todo.rb list
 $ ruby todo.rb delete <task_id>
@@ -44,7 +44,7 @@ These aren't just the user-facing commands like "add", "delete", etc. They're al
 Objective: Implement the List Command
 -------------------------------------
 
-```ruby
+```
 $ ruby todo.rb list
 1. Bake a delicious blueberry-glazed cheesecake
 2. Write up that memo and fax it out
@@ -56,7 +56,7 @@ You'll have to design and build basic controller and model code to make this wor
 Objective: Implement the Add Command
 ------------------------------------
 
-```ruby
+```
 $ ruby todo.rb add Walk the dog
 Appended "Walk the dog" to your TODO list...
 ```
@@ -64,7 +64,7 @@ Appended "Walk the dog" to your TODO list...
 Objective: Implement the Delete Command
 ---------------------------------------
 
-```ruby
+```
 $ ruby todo.rb list
 1. Bake a delicious blueberry-glazed cheesecake
 2. Write up that memo and fax it out
@@ -88,7 +88,7 @@ Extra Credit: Human Readable File
 ---------------------------------
 Make it look good and handle commas
 
-```ruby
+```
 1. [ ]  Bake a delicious blueberry-glazed cheesecake
 2. [X]  Write up that memo and fax it out
 3. [ ]  Conquer the world
