@@ -13,9 +13,12 @@ Example commands
 
 Example CSV
 -----------
+
+```
   Bake a delicious blueberry-glazed cheesecake  
   Go play miniature golf with Mike Tyson  
-  Become a World-Class Developer  
+  Become a World-Class Developer
+```
 
 Learning Goals
 --------------
@@ -27,7 +30,7 @@ Objective: Enumerate the responsibilities
 These aren't just the user-facing commands like "add", "delete", etc. They're also back-end responsibilities like reading and writing from the todo.csv file, parsing command-line arguments, and printing the "interface" to the console. Each responsibility should map to a concrete unit of Ruby code. 
 
 <table>
-<th><td>Responsibility                            </td><td> Code World </td></th>
+<tr><th>Responsibility                            </th><th> Code World </th></tr>
 <tr><td>Initialize an empty TODO list             </td><td> list = List.new</td><tr>
 <tr><td>Add a task to a TODO list                 </td><td> list.add(Task.new("walk the dog"))</td><tr>
 <tr><td>Get all the tasks on a TODO list          </td><td> tasks = list.tasks</td><tr>
