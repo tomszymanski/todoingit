@@ -10,8 +10,8 @@ class Todo
 end
 
 class ListOfTodos
-  def initialize
-    @list_of_todos = []
+  def initialize(storage_list_of_todos)
+    @list_of_todos = storage_list_of_todos
   end
 
   def add(new_todo_item)
@@ -22,7 +22,7 @@ class ListOfTodos
     @list_of_todos.delete_at(todo_index)
   end
 
-  def show
+  def list
     @list_of_todos
   end
 end
@@ -31,15 +31,20 @@ class Storage
   STORAGE_FILE="todo.csv"
 
   def self.save(todo_list)
-    CSV.open(STORAGE_FILE, "wb") do |csv|
-        csv << todo_list
+    File.open(STORAGE_FILE, "wb") do |csv|
+      todo_list.each do |todo|
+        csv << todo.description + ','
+      end
     end
   end
 
-  def self.show
+  def self.load
     storage_file_contents = []
-    CSV.foreach(STORAGE_FILE) do |row|
-      storage_file_contents << row
+    File.open(STORAGE_FILE, "r").each_line do |list_of_todos|
+      list_of_todos.split(',').each do |todo_description|
+        todo = Todo.new(todo_description)
+        storage_file_contents << todo
+      end
     end
     storage_file_contents
   end
@@ -47,23 +52,21 @@ class Storage
 end
 
 class Action
+  @user_list_of_todos = ListOfTodos.new(Storage.load)
 
-  @user_list_of_todos = ListOfTodos.new
-
-  def add(user_created_todo_item)
-    user_todo = Todo.new
-    user_todo(user_created_todo_item)
+  def self.add(user_created_todo_item)
+    user_todo = Todo.new(user_created_todo_item)
     @user_list_of_todos.add(user_todo)
-    Storage.save(@user_list_of_todos.show)
+    Storage.save(@user_list_of_todos.list)
   end
 
-  def list
-    @user_list_of_todos.show
+  def self.list
+    @user_list_of_todos.list
   end
 
-  def delete(user_todo_index)
+  def self.delete(user_todo_index)
     @user_list_of_todos.delete(user_todo_index)
-    Storage.save(@user_list_of_todos.show)
+    Storage.save(@user_list_of_todos.list)
   end
 
 end
