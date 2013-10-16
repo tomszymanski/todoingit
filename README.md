@@ -1,5 +1,6 @@
 TODOINGIT
 =================================
+[![Code Climate](https://codeclimate.com/repos/525e192a7e00a40832001f0c/badges/64f54a7f030bd68a49b4/gpa.png)](https://codeclimate.com/repos/525e192a7e00a40832001f0c/feed)
 
 Example commands
 ----------------
