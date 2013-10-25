@@ -1,8 +1,10 @@
 class Todo
+  attr_accessor :complete
   attr_reader :description
 
-  def initialize(description)
+  def initialize(description,complete=0)
     @description = description
+    @complete = complete
   end
 
 end
@@ -23,26 +25,29 @@ class ListOfTodos
   def list
     @list_of_todos
   end
+
+  def complete(todo_index)
+    @list_of_todos[todo_index].complete = 1
+  end
 end
 
 class Storage
   STORAGE_FILE="todo.csv"
 
   def self.save(todo_list)
-    File.open(STORAGE_FILE, "wb") do |csv|
+    File.open(STORAGE_FILE, "wb") do |file|
       todo_list.each do |todo|
-        csv << todo.description + ','
+        file.puts todo.description + ',' + todo.complete.to_s
       end
     end
   end
 
   def self.load
     storage_file_contents = []
-    File.open(STORAGE_FILE, "r").each_line do |list_of_todos|
-      list_of_todos.split(',').each do |todo_description|
-        todo = Todo.new(todo_description)
-        storage_file_contents << todo
-      end
+    File.open(STORAGE_FILE, "r").each_line do |todo_row|
+      todo_array = todo_row.split(',')
+      todo = Todo.new(todo_array[0],todo_array[1].chomp)
+      storage_file_contents << todo
     end
     storage_file_contents
   end
@@ -67,6 +72,11 @@ class Action
     Storage.save(@user_list_of_todos.list)
   end
 
+  def self.complete(user_todo_index)
+    @user_list_of_todos.complete(user_todo_index)
+    Storage.save(@user_list_of_todos.list)
+  end
+
 end
 
 case ARGV[0]
@@ -86,7 +96,15 @@ case ARGV[0]
     list_of_todos = Action.list
     list_of_todos.each do |todo_object|
       display_num = list_of_todos.index(todo_object)+1
-      puts "#{display_num}. #{todo_object.description}"
+
+      case Integer(todo_object.complete)
+        when 0
+          complete_display = " "
+        when 1
+          complete_display = "X"
+      end
+
+      puts "#{display_num}. [#{complete_display}] #{todo_object.description}"
     end
 
   when /delete/i
@@ -96,6 +114,14 @@ case ARGV[0]
     Action.delete(todo_to_delete)
 
     puts "Deleted \"#{description_of_todo_to_delete}\" from your TODO list..."
+
+  when /complete/i
+    todo_to_complete = Integer(ARGV[1]) -1
+    description_of_todo_to_complete = Action.list[todo_to_complete].description
+
+    Action.complete(todo_to_complete)
+
+    puts "Completed \"#{description_of_todo_to_complete}\""
 
 end
 
