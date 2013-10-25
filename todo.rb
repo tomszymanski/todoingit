@@ -1,5 +1,3 @@
-require 'csv'
-
 class Todo
   attr_reader :description
 
@@ -68,6 +66,36 @@ class Action
     @user_list_of_todos.delete(user_todo_index)
     Storage.save(@user_list_of_todos.list)
   end
+
+end
+
+case ARGV[0]
+
+  when /add/i
+    ARGV.shift
+    new_todo = ''
+    ARGV.each do |word|
+      new_todo << word + ' '
+    end
+    Action.add(new_todo.rstrip)
+    description_of_last_added_todo = Action.list[-1].description
+
+    puts "Appended \"#{description_of_last_added_todo}\" to your TODO list..."
+
+  when /list/i
+    list_of_todos = Action.list
+    list_of_todos.each do |todo_object|
+      display_num = list_of_todos.index(todo_object)+1
+      puts "#{display_num}. #{todo_object.description}"
+    end
+
+  when /delete/i
+    todo_to_delete = Integer(ARGV[1]) -1
+    description_of_todo_to_delete = Action.list[todo_to_delete].description
+
+    Action.delete(todo_to_delete)
+
+    puts "Deleted \"#{description_of_todo_to_delete}\" from your TODO list..."
 
 end
 
