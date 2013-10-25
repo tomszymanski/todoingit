@@ -109,17 +109,16 @@ class UserAction
     end
   end
 
-  def self.delete_or_complete(delete_or_complete,index)
-    action_index = Integer(ARGV[1]) -1
-    description = Action.list[action_index].description
+  def self.update(delete_or_complete,index)
+    description = Action.list[index].description
 
     case delete_or_complete
       when 'delete' 
-        Action.delete(action_index)
+        Action.delete(index)
         display_string = 'Deleted'
         from_or_in = 'from'
       when 'complete'
-        Action.complete(action_index)
+        Action.complete(index)
         display_string = 'Completed'
         from_or_in = 'in'
     end
@@ -138,10 +137,10 @@ case ARGV[0]
     UserAction.list
 
   when /delete/i
-    UserAction.delete_or_complete('delete',Integer(ARGV[1])-1)
+    UserAction.update('delete',Integer(ARGV[1])-1)
 
   when /complete/i
-    UserAction.delete_or_complete('complete',Integer(ARGV[1])-1)
+    UserAction.update('complete',Integer(ARGV[1])-1)
 
 end
 
