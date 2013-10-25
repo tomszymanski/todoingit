@@ -9,9 +9,13 @@ case ARGV[0]
     UserAction.list
 
   when /delete/i
-    UserAction.update('delete',Integer(ARGV[1])-1)
+    index_to_delete=Integer(ARGV[1])-1
+
+    UserAction.update('delete',index_to_delete)
 
   when /complete/i
-    UserAction.update('complete',Integer(ARGV[1])-1)
+    index_to_complete=Integer(ARGV[1])-1
+    
+    UserAction.update('complete',index_to_complete)
 
 end
