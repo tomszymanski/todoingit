@@ -79,9 +79,9 @@ class Action
 
 end
 
-case ARGV[0]
+class UserAction
 
-  when /add/i
+  def self.add
     ARGV.shift
     new_todo = ''
     ARGV.each do |word|
@@ -91,8 +91,9 @@ case ARGV[0]
     description_of_last_added_todo = Action.list[-1].description
 
     puts "Appended \"#{description_of_last_added_todo}\" to your TODO list..."
+  end
 
-  when /list/i
+  def self.list
     list_of_todos = Action.list
     list_of_todos.each do |todo_object|
       display_num = list_of_todos.index(todo_object)+1
@@ -106,22 +107,41 @@ case ARGV[0]
 
       puts "#{display_num}. [#{complete_display}] #{todo_object.description}"
     end
+  end
+
+  def self.delete_or_complete(delete_or_complete,index)
+    action_index = Integer(ARGV[1]) -1
+    description = Action.list[action_index].description
+
+    case delete_or_complete
+      when 'delete' 
+        Action.delete(action_index)
+        display_string = 'Deleted'
+        from_or_in = 'from'
+      when 'complete'
+        Action.complete(action_index)
+        display_string = 'Completed'
+        from_or_in = 'in'
+    end
+
+    puts "#{display_string} \"#{description}\" #{from_or_in} your TODO list..."    
+  end
+
+end
+
+case ARGV[0]
+
+  when /add/i
+    UserAction.add
+
+  when /list/i
+    UserAction.list
 
   when /delete/i
-    todo_to_delete = Integer(ARGV[1]) -1
-    description_of_todo_to_delete = Action.list[todo_to_delete].description
-
-    Action.delete(todo_to_delete)
-
-    puts "Deleted \"#{description_of_todo_to_delete}\" from your TODO list..."
+    UserAction.delete_or_complete('delete',Integer(ARGV[1])-1)
 
   when /complete/i
-    todo_to_complete = Integer(ARGV[1]) -1
-    description_of_todo_to_complete = Action.list[todo_to_complete].description
-
-    Action.complete(todo_to_complete)
-
-    puts "Completed \"#{description_of_todo_to_complete}\""
+    UserAction.delete_or_complete('complete',Integer(ARGV[1])-1)
 
 end
 
