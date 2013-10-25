@@ -16,6 +16,6 @@ class ListOfTodos
   end
 
   def complete(todo_index)
-    @list_of_todos[todo_index].complete = 1
+    @list_of_todos[todo_index].complete
   end
 end

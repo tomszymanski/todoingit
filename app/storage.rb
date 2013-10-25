@@ -6,7 +6,7 @@ class Storage
   def self.save(todo_list)
     File.open(@config.storage_file, "wb") do |file|
       todo_list.each do |todo|
-        file.puts todo.description + ',' + todo.complete.to_s
+        file.puts todo.description + ',' + todo.is_complete
       end
     end
   end
