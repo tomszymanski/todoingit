@@ -1,2 +1,2 @@
 storage :
-  path : 'config/todo.csv'
+  path : 'config/todo.yml'

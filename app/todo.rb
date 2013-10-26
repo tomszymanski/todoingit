@@ -1,12 +1,12 @@
 class Todo
-  attr_reader :description
+  attr_reader :description,:complete
 
   def initialize(description,complete_val = 'false')
     @description = description
     @complete = complete_val
   end
 
-  def complete
+  def complete_me
     @complete = 'true'
   end
 

@@ -1,0 +1,11 @@
+---
+todos:
+- !ruby/object:Todo
+  description: eggs
+  complete: 'true'
+- !ruby/object:Todo
+  description: salmon
+  complete: 'false'
+- !ruby/object:Todo
+  description: waffles
+  complete: 'true'
