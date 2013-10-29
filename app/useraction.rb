@@ -14,13 +14,28 @@ class UserAction
     list
   end
 
-  def self.list
+  def self.list(list_ordering=String.new)
     list_of_todos = Action.list
-    list_of_todos.each do |todo_object|
-      display_num = list_of_todos.index(todo_object)+1
+    display_list = ''
 
-      puts "#{display_num}. #{todo_object.to_s}"
+    sorted_list_of_todos = list_of_todos.sort do |todo_a,todo_b|
+      case list_ordering
+      when 'outstanding'      
+        todo_a.creation_date <=> todo_b.creation_date
+      when 'completed'
+        todo_b.completion_date <=> todo_a.completion_date
+      else
+        list_of_todos.index(todo_a) <=> list_of_todos.index(todo_b)
+      end
     end
+
+    sorted_list_of_todos.each do |todo_object|
+      display_num = list_of_todos.index(todo_object)+1
+      display_list << "#{display_num}. #{todo_object.to_s}\n"
+    end
+
+    puts display_list
+
   end
 
   def self.update(delete_or_complete,index)

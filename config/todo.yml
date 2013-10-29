@@ -1,11 +1,22 @@
 ---
 todos:
 - !ruby/object:Todo
-  description: eggs
+  description: newest
   complete: 'true'
+  creation_date: 2013-10-28 23:19:00.937432000 -06:00
+  completion_date: 2013-10-28 23:46:11.658620000 -06:00
 - !ruby/object:Todo
-  description: salmon
+  description: oldest
+  complete: 'true'
+  creation_date: 2013-10-28 23:17:58.965596000 -06:00
+  completion_date: 0000-01-01 00:00:00.000000000 -07:00
+- !ruby/object:Todo
+  description: middle
+  complete: 'true'
+  creation_date: 2013-10-28 23:18:54.279216000 -06:00
+  completion_date: 2013-10-28 23:47:49.657152000 -06:00
+- !ruby/object:Todo
+  description: bagels
   complete: 'false'
-- !ruby/object:Todo
-  description: waffles
-  complete: 'true'
+  creation_date: 2013-10-28 23:52:36.219245000 -06:00
+  completion_date: 0000-01-01 00:00:00.000000000 -07:00

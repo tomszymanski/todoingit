@@ -6,8 +6,9 @@ case ARGV[0]
     ARGV.shift
     UserAction.add(ARGV)
 
-  when /list/i
-    UserAction.list
+  when /list.*/i
+    list_ordering = ARGV[0].split(':')[1]
+    UserAction.list(list_ordering)
 
   when /delete/i
     index_to_delete = Integer(ARGV[1]) - 1

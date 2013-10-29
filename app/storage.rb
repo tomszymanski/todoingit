@@ -18,7 +18,10 @@ class Storage
 
     hash_of_todos = YAML.load_file(@config.storage_file)
     hash_of_todos['todos'].each do |todo|
-      storage_file_contents << Todo.new(todo.description,todo.complete)
+      storage_file_contents << Todo.new(todo.description,
+                                        todo.complete,
+                                        todo.creation_date,
+                                        todo.completion_date)
     end
     storage_file_contents
 
