@@ -2,10 +2,10 @@ require_relative 'action'
 
 class UserAction
 
-  def self.add(user_input_array)
+  def self.add(array_of_strings_for_todo)
     new_todo = ''
 
-    user_input_array.each do |word|
+    array_of_strings_for_todo.each do |word|
       new_todo << word + ' '
     end
 
@@ -21,7 +21,7 @@ class UserAction
     sorted_list_of_todos = list_of_todos.sort do |todo_a,todo_b|
       case list_ordering
       when 'outstanding'      
-        todo_a.creation_date <=> todo_b.creation_date
+        todo_b.creation_date <=> todo_a.creation_date
       when 'completed'
         todo_b.completion_date <=> todo_a.completion_date
       else
@@ -36,6 +36,11 @@ class UserAction
 
     puts display_list
 
+  end
+
+  def self.tag(index,array_of_tags)
+    Action.tag(index,array_of_tags)
+    list
   end
 
   def self.update(delete_or_complete,index)

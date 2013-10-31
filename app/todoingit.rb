@@ -1,23 +1,28 @@
 require_relative 'useraction'
 
+get_index = ARGV[1].to_i - 1
+get_after_command = ARGV[0].split(':')[1]
+
 case ARGV[0]
 
-  when /add/i
-    ARGV.shift
-    UserAction.add(ARGV)
+  when /^add/i
+    after_add_array = ARGV.slice(1..-1)
+    UserAction.add(after_add_array)
+
+  when /^complete/i
+    UserAction.update('complete',get_index)
+
+  when /^delete/i
+    UserAction.update('delete',get_index)
+
+  when /^filter/i
+    puts get_after_command
 
   when /list.*/i
-    list_ordering = ARGV[0].split(':')[1]
-    UserAction.list(list_ordering)
+    UserAction.list(get_after_command)
 
-  when /delete/i
-    index_to_delete = Integer(ARGV[1]) - 1
-
-    UserAction.update('delete',index_to_delete)
-
-  when /complete/i
-    index_to_complete = Integer(ARGV[1]) - 1
-
-    UserAction.update('complete',index_to_complete)
+  when /^tag/i
+    tag_array = ARGV.slice(2..-1)
+    UserAction.tag(get_index,tag_array)
 
 end

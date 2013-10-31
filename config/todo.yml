@@ -1,22 +1,25 @@
 ---
 todos:
 - !ruby/object:Todo
-  description: newest
+  description: cream cheese
   complete: 'true'
-  creation_date: 2013-10-28 23:19:00.937432000 -06:00
-  completion_date: 2013-10-28 23:46:11.658620000 -06:00
+  creation_date: 2013-10-31 09:19:12.259265000 -06:00
+  completion_date: 2013-10-31 10:18:29.532052000 -06:00
+  tag:
+  - eggs
+  - waffles
+  - pancakes
 - !ruby/object:Todo
-  description: oldest
-  complete: 'true'
-  creation_date: 2013-10-28 23:17:58.965596000 -06:00
-  completion_date: 0000-01-01 00:00:00.000000000 -07:00
-- !ruby/object:Todo
-  description: middle
-  complete: 'true'
-  creation_date: 2013-10-28 23:18:54.279216000 -06:00
-  completion_date: 2013-10-28 23:47:49.657152000 -06:00
-- !ruby/object:Todo
-  description: bagels
+  description: chocolate
   complete: 'false'
-  creation_date: 2013-10-28 23:52:36.219245000 -06:00
+  creation_date: 2013-10-31 10:25:36.698420000 -06:00
   completion_date: 0000-01-01 00:00:00.000000000 -07:00
+  tag: []
+- !ruby/object:Todo
+  description: vanilla
+  complete: 'true'
+  creation_date: 2013-10-31 10:28:59.267047000 -06:00
+  completion_date: 2013-10-31 10:30:02.911642000 -06:00
+  tag:
+  - chips
+  - peanuts

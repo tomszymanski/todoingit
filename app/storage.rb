@@ -21,7 +21,8 @@ class Storage
       storage_file_contents << Todo.new(todo.description,
                                         todo.complete,
                                         todo.creation_date,
-                                        todo.completion_date)
+                                        todo.completion_date,
+                                        todo.tag)
     end
     storage_file_contents
 

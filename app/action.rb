@@ -11,22 +11,27 @@ class Action
     save_list_of_todos
   end
 
-  def self.list
-    @user_list_of_todos.list
+  def self.complete(user_todo_index)
+    @user_list_of_todos.complete(user_todo_index)
+    save_list_of_todos
   end
 
   def self.delete(user_todo_index)
     @user_list_of_todos.delete(user_todo_index)
     save_list_of_todos
   end
-
-  def self.complete(user_todo_index)
-    @user_list_of_todos.complete(user_todo_index)
-    save_list_of_todos
+  
+  def self.list
+    @user_list_of_todos.list
   end
 
   def self.save_list_of_todos
     Storage.save(@user_list_of_todos.list)
+  end
+
+  def self.tag(user_todo_index,array_of_tags)
+    @user_list_of_todos.tag(user_todo_index,array_of_tags)
+    save_list_of_todos
   end
 
 end
