@@ -16,7 +16,7 @@ case ARGV[0]
     UserAction.update('delete',get_index)
 
   when /^filter/i
-    puts get_after_command
+    UserAction.list(String.new,get_after_command)
 
   when /list.*/i
     UserAction.list(get_after_command)

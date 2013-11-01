@@ -14,7 +14,8 @@ class UserAction
     list
   end
 
-  def self.list(list_ordering=String.new)
+  def self.list(list_ordering = String.new,
+                tag_to_filter_on = String.new)
     list_of_todos = Action.list
     display_list = ''
 
@@ -31,7 +32,13 @@ class UserAction
 
     sorted_list_of_todos.each do |todo_object|
       display_num = list_of_todos.index(todo_object)+1
-      display_list << "#{display_num}. #{todo_object.to_s}\n"
+      if !tag_to_filter_on.empty?
+        if todo_object.tag.any? { |filter| filter == tag_to_filter_on }
+          display_list << "#{display_num}. #{todo_object.to_s}\n"
+        end
+      else
+        display_list << "#{display_num}. #{todo_object.to_s}\n"
+      end
     end
 
     puts display_list
