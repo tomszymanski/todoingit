@@ -18,11 +18,7 @@ class UserAction
                 tag_to_filter_on = String.new)
     display_list = ''
 
-    if !list_ordering.nil?
-      list_of_todos = sort(list_ordering)
-    else
-      list_of_todos = Action.list
-    end
+    list_of_todos = sort(list_ordering)
 
     list_of_todos.each do |todo_object|
       display_num = list_of_todos.index(todo_object)+1
