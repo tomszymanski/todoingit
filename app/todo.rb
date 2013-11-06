@@ -4,6 +4,7 @@ class Todo
               :creation_date, 
               :completion_date,
               :tag
+  attr_accessor :index
 
   def initialize(description,
                 complete = 'false',
@@ -25,19 +26,23 @@ class Todo
   def display_complete
     case is_complete
     when 'true'
-      @complete_display = "X"
+      complete_display = "X"
     when 'false'
-      @complete_display = " "
+      complete_display = " "
     end
-    @complete_display = "[#{@complete_display}]"
+    complete_display = "[#{complete_display}]"
+  end
+
+  def display_index
+    @index = @index + 1
   end
 
   def display_tag
-    @tag_display = ""
+    tag_display = String.new
     @tag.each do |tag|
-      @tag_display << "##{tag} "
+      tag_display << "##{tag} "
     end
-    @tag_display = "[#{@tag_display.chomp(' ')}]"
+    tag_display = "[#{tag_display.chomp(' ')}]"
   end
 
   def is_complete
@@ -49,7 +54,7 @@ class Todo
   end
 
   def to_s
-    "#{display_complete} #{@description} #{display_tag}"
+    "#{display_index}. #{display_complete} #{@description} #{display_tag}"
   end
 
 end
