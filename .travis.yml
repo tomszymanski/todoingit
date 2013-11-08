@@ -3,9 +3,6 @@ before_install:
   - travis_retry gem install bundler
 rvm:
   - 2.0.0
-script: 
-  - bundle
-  - bundle install
 addons:
  code_climate:
    repo_token: 48c522b956c924ea0ba99bf91f3fdfd8b296c159514bca0774d2113bbc1eecae
