@@ -20,3 +20,4 @@ DEPENDENCIES
   json
   minitest
   rake
+  simplecov
